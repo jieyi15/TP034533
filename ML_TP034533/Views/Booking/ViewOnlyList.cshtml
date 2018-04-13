@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ML_TP034533.Models.BookingModel>
+
+@{
+    ViewBag.Title = "ViewOnlyList";
+}
+
+<h2>Booking List</h2>
+
+<table class="table">
+    <tr>        
+        <th>
+            @Html.DisplayNameFor(model => model.customerData.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContainerAmount)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.scheduleData.DepartureCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.scheduleData.ArrivalCity)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerData.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContainerAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.scheduleData.DepartureCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.scheduleData.ArrivalCity)
+        </td>
+
+    </tr>
+    }
+
+
+
+</table>
+
+
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ML_TP034533.Models.ScheduleModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Schedule List</h2>
+
+<p>
+    @Html.ActionLink("View Booking", "List")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalDate)
+        </td>
+        <td>
+            @Html.ActionLink("Make Booking", "Create", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,62 @@
+﻿@model ML_TP034533.ViewModel.BookViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Make Booking</h2>
+
+
+@using (Html.BeginForm("addBooking", "Booking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(b => b.scheduleModel.Id)
+    @Html.HiddenFor(b => b.scheduleModel.DepartureCity)
+    @Html.HiddenFor(b => b.scheduleModel.ArrivalCity)
+    @Html.HiddenFor(b => b.scheduleModel.DepartureDate)
+    @Html.HiddenFor(b => b.scheduleModel.ArrivalDate)
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.bookModel.customerData.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.bookModel.customerModelId, new SelectList(Model.customerModelList, "Id", "customerName"), "----------Select Customer----------", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.bookModel.customerModelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.bookModel.ItemWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.bookModel.ItemWeight, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.bookModel.ItemWeight, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.bookModel.ContainerAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.bookModel.ContainerAmount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.bookModel.ContainerAmount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
